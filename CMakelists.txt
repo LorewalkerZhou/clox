@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.10)
+project(clox)
+
+include_directories(src)
+file(GLOB SRC_FILES "src/*.c")
+add_executable(clox main.c ${SRC_FILES})
