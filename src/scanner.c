@@ -47,7 +47,7 @@ static char peekNext() {
 }
 
 static bool match(char except) {
-    if (isAtEnd) return false;
+    if (isAtEnd()) return false;
     if (*scanner.current != except) return false;
     scanner.current++;
     return true;
@@ -170,6 +170,7 @@ static Token number() {
 }
 
 Token scanToken() {
+    skipWhitespace();
     scanner.start = scanner.current;
 
     char c = advance();
@@ -196,6 +197,5 @@ Token scanToken() {
     }
 
     if (isAtEnd()) return makeToken(TOKEN_EOF);
-
     return errorToken("Unexpected character.");
 }
